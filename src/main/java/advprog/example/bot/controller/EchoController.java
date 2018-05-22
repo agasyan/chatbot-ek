@@ -27,10 +27,10 @@ public class EchoController {
         if (contentSplit[0].equals("/echo")) {
             String replyText = contentText.replace("/echo", "");
             return new TextMessage(replyText.substring(1));
-        } else if (contentSplit[0].equals("/enterkomputer")){
+        } else if (contentSplit[0].equals("/enterkomputer")) {
             if (contentSplit[1].equals("listkategori")) {
                 ListKategori listKategori = new ListKategori();
-                return listKategori.getListAllKategori();
+                return listKategori.getListAllKategoriApi();
             }
             return new TextMessage("not yet implemented");
         } else {

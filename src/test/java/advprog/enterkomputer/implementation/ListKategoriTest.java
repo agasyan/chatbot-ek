@@ -43,7 +43,7 @@ public class ListKategoriTest {
                 + "Software & OS <software>\n"
                 + "Cooler & Fan  <coolerfan>\n"
                 + "Flashdisk <flashdisk>\n"
-                + "Memory Card<memorycard>\n"
+                + "Memory Card <memorycard>\n"
                 + "UPS & Stabilizer <ups>\n"
                 + "Networking <networking>\n"
                 + "Modem Portable (GSM & CDMA) <modem>\n"
@@ -74,7 +74,7 @@ public class ListKategoriTest {
                 + "Projector <projector>\n"
                 + "Drone <drone>";
         TextMessage expectedText = new TextMessage(expectedOut);
-        TextMessage outputFromCall = listKategori.getListAllKategori();
+        TextMessage outputFromCall = listKategori.getListAllKategoriWeb();
         assertEquals(expectedText.getText(),outputFromCall.getText());
     }
 }
