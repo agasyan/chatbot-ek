@@ -1,68 +1,30 @@
-package advprog.example.bot.controller;
+package advprog.enterkomputer.implementation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import java.io.IOException;
 
-import advprog.example.bot.EventTestUtil;
-
-import com.linecorp.bot.model.event.Event;
-import com.linecorp.bot.model.event.MessageEvent;
-import com.linecorp.bot.model.event.message.TextMessageContent;
 import com.linecorp.bot.model.message.TextMessage;
+import enterkomputer.implementation.ListKategori;
+import org.junit.Before;
+import org.junit.Test;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+public class ListKategoriTest {
+    private ListKategori listKategori;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-@SpringBootTest(properties = "line.bot.handler.enabled=false")
-@ExtendWith(SpringExtension.class)
-public class EchoControllerTest {
-
-    static {
-        System.setProperty("line.bot.channelSecret", "SECRET");
-        System.setProperty("line.bot.channelToken", "TOKEN");
-    }
-
-    @Autowired
-    private EchoController echoController;
-
-    @Test
-    void testContextLoads() {
-        assertNotNull(echoController);
+    @Before
+    public void SetUp() {
+        listKategori = new ListKategori();
     }
 
     @Test
-    void testHandleTextMessageEvent() {
-        MessageEvent<TextMessageContent> event =
-                EventTestUtil.createDummyTextMessage("/echo Lorem Ipsum");
-
-        TextMessage reply = echoController.handleTextMessageEvent(event);
-
-        assertEquals("Lorem Ipsum", reply.getText());
+    public void testConstructorListKategoriWork() {
+        assertNotNull(listKategori);
     }
 
     @Test
-    void testHandleDefaultMessage() {
-        Event event = mock(Event.class);
-
-        echoController.handleDefaultMessage(event);
-
-        verify(event, atLeastOnce()).getSource();
-        verify(event, atLeastOnce()).getTimestamp();
-    }
-
-    @Test
-    void testKategoriEnterKomputer() {
-        MessageEvent<TextMessageContent> event =
-                EventTestUtil.createDummyTextMessage("/enterkomputer listkategori");
-        TextMessage reply = echoController.handleTextMessageEvent(event);
+    public void testOutput() {
         String expectedOut = "Kategori yang ada di EnterKomputer adalah sebagai berikut"
                 + " untuk menggunakan bot harap gunakan kata yang ada di dalam tanda '<~>':\n"
                 + "Processor <processor>\n"
@@ -111,6 +73,8 @@ public class EchoControllerTest {
                 + "Media Player <mediaplayer>\n"
                 + "Projector <projector>\n"
                 + "Drone <drone>";
-        assertEquals(reply.getText(),expectedOut);
+        TextMessage expectedText = new TextMessage(expectedOut);
+        TextMessage outputFromCall = listKategori.getListAllKategori();
+        assertEquals(expectedText.getText(),outputFromCall.getText());
     }
 }

@@ -7,6 +7,8 @@ import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
+import enterkomputer.implementation.ListKategori;
+
 import java.util.logging.Logger;
 
 @LineMessageHandler
@@ -21,8 +23,19 @@ public class EchoController {
         TextMessageContent content = event.getMessage();
         String contentText = content.getText();
 
-        String replyText = contentText.replace("/echo", "");
-        return new TextMessage(replyText.substring(1));
+        String[] contentSplit = contentText.split(" ");
+        if (contentSplit[0].equals("/echo")) {
+            String replyText = contentText.replace("/echo", "");
+            return new TextMessage(replyText.substring(1));
+        } else if (contentSplit[0].equals("/enterkomputer")){
+            if (contentSplit[1].equals("listkategori")) {
+                ListKategori listKategori = new ListKategori();
+                return listKategori.getListAllKategori();
+            }
+            return new TextMessage("not yet implemented");
+        } else {
+            return new TextMessage("Wrong Command");
+        }
     }
 
     @EventMapping
