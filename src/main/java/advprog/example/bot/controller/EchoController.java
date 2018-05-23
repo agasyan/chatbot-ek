@@ -7,8 +7,10 @@ import com.linecorp.bot.model.message.TextMessage;
 import com.linecorp.bot.spring.boot.annotation.EventMapping;
 import com.linecorp.bot.spring.boot.annotation.LineMessageHandler;
 
+import enterkomputer.implementation.GetterBarang;
 import enterkomputer.implementation.ListKategori;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 
 @LineMessageHandler
@@ -17,7 +19,8 @@ public class EchoController {
     private static final Logger LOGGER = Logger.getLogger(EchoController.class.getName());
 
     @EventMapping
-    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event) {
+    public TextMessage handleTextMessageEvent(MessageEvent<TextMessageContent> event)
+            throws IOException {
         LOGGER.fine(String.format("TextMessageContent(timestamp='%s',content='%s')",
                 event.getTimestamp(), event.getMessage()));
         TextMessageContent content = event.getMessage();
@@ -31,8 +34,13 @@ public class EchoController {
             if (contentSplit[1].equals("listkategori")) {
                 ListKategori listKategori = new ListKategori();
                 return listKategori.getListAllKategoriApi();
+            } else {
+                String category = contentSplit[1];
+                String name = contentText.replace("/enterkomputer " + category
+                    + " ", "");
+                GetterBarang getterBarang = new GetterBarang(category);
+                return getterBarang.searchProduct(name);
             }
-            return new TextMessage("not yet implemented");
         } else {
             return new TextMessage("Wrong Command");
         }

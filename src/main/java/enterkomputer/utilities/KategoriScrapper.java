@@ -10,13 +10,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class KategoriScrapper {
-
+    /*
     public static void main(String[]args) throws IOException {
         KategoriScrapper kategoriScrapper = new KategoriScrapper();
         String urlEnterKomputer = "https://www.enterkomputer.com/api/product";
         System.out.println(kategoriScrapper.scrapperApi(urlEnterKomputer));
     }
-
+    */
 
     public KategoriScrapper() {
 
