@@ -63,7 +63,7 @@ public class EchoControllerTest {
         MessageEvent<TextMessageContent> event =
                 EventTestUtil.createDummyTextMessage("/enterkomputer listkategori");
         TextMessage reply = echoController.handleTextMessageEvent(event);
-        String expectedOut ="Kategori yang ada di EnterKomputer adalah sebagai berikut"
+        String expectedOut = "Kategori yang ada di EnterKomputer adalah sebagai berikut"
                 + " untuk menggunakan bot harap gunakan kata yang ada di dalam tanda '<~>':\n"
                 + "Accessories <accessories>\n"
                 + "AIO PC & PC Branded <allinone>\n"
