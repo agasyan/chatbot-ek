@@ -3,8 +3,6 @@ package advprog.enterkomputer.implementation;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.io.IOException;
-
 import com.linecorp.bot.model.message.TextMessage;
 import enterkomputer.implementation.ListKategori;
 import org.junit.Before;
@@ -14,7 +12,7 @@ public class ListKategoriTest {
     private ListKategori listKategori;
 
     @Before
-    public void SetUp() {
+    public void setUp() {
         listKategori = new ListKategori();
     }
 
