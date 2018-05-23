@@ -25,8 +25,8 @@ public class BarangParser {
         try {
             URL apiUrl = new URL("https://enterkomputer.com/api/product/" + categoryName
                     + ".json");
-            BufferedReader bufferedReader = new BufferedReader
-                    (new InputStreamReader(apiUrl.openStream()));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
+                    apiUrl.openStream()));
             String apiReadLine = bufferedReader.readLine();
             JSONParser jsonParser = new JSONParser();
             try {
