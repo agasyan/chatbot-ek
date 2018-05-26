@@ -16,10 +16,12 @@ public class BarangParser {
     ArrayList<JSONObject> jsonObjects = new ArrayList<>();
     boolean kategoriExist = true;
 
+    /*
     public static void main(String[]args) throws IOException {
         BarangParser barangParser = new BarangParser("asasa");
         System.out.println(barangParser);
     }
+    */
 
     public BarangParser(String categoryName) throws IOException {
         try {

@@ -14,6 +14,13 @@ public class GetterBarang {
     public GetterBarang(String category) throws IOException {
         barangParser = new BarangParser(category);
     }
+    /*
+    public static void main(String[]args) throws IOException {
+        GetterBarang getterBarang = new GetterBarang("vga");
+        TextMessage aa = getterBarang.searchProduct("gtx 1080");
+        System.out.println(aa);
+    }
+    */
 
     public TextMessage searchProduct(String name) {
         String out = "";

@@ -98,4 +98,22 @@ public class EchoControllerTest {
                 + "VGA Card <vga>\n";
         assertEquals(reply.getText(),expectedOut);
     }
+
+    @Test
+    void testHandleCategoryExistsOrNot() throws IOException {
+        MessageEvent<TextMessageContent> event =
+                EventTestUtil.createDummyTextMessage("/enterkomputer Category Barang Name");
+        TextMessage reply = echoController.handleTextMessageEvent(event);
+        String msgExp = "Kategori Is not Exist";
+        assertEquals(reply.getText(),msgExp);
+    }
+
+    @Test
+    void testWrongCommand() throws IOException {
+        MessageEvent<TextMessageContent> event =
+                EventTestUtil.createDummyTextMessage("/asdaasasa");
+        TextMessage reply = echoController.handleTextMessageEvent(event);
+        String expected = "Wrong Command";
+        assertEquals(reply.getText(),expected);
+    }
 }
