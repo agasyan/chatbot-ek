@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import com.linecorp.bot.model.message.TextMessage;
 
 import enterkomputer.implementation.GetterBarang;
-import org.junit.Before;
+import java.io.IOException;
 import org.junit.Test;
 
-import java.io.IOException;
+
 
 public class GetterBarangTest {
     private GetterBarang getterBarang;

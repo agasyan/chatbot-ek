@@ -2,14 +2,14 @@ package advprog.enterkomputer.utilities;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import enterkomputer.utilities.BarangParser;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import enterkomputer.utilities.BarangParser;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.expression.ParseException;
 
 public class BarangScrapperTest {
     private BarangParser barangParser;
